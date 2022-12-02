@@ -1,4 +1,5 @@
 import { GetServerSideProps, NextPage, GetStaticPaths } from 'next';
+
 import { Grid, Card, Text, Button, Container, Image } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 import { MainLayout, Poke, pokemonApi } from '../..';
@@ -15,7 +16,6 @@ const PokemonPage: NextPage<PropsPokemonPage> = ({
   },
 }) => {
   const router = useRouter();
-  console.log('router', router.query);
 
   return (
     <MainLayout>
