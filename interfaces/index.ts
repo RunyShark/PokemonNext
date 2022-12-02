@@ -8,4 +8,6 @@ export interface Pokemons {
 export interface Result {
   name: string;
   url: string;
+  id: number;
+  img: string;
 }
