@@ -1,9 +1,9 @@
 import React from 'react';
-import { MainLayout } from '../../';
+import { MainLayout } from '../../index';
 
 const FavoritesPage = () => {
   return (
-    <MainLayout>
+    <MainLayout title='Pokémons- Favoritos'>
       <h1>Favoritos</h1>
     </MainLayout>
   );

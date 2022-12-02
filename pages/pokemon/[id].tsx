@@ -1,8 +1,7 @@
+import { useEffect } from 'react';
 import { GetServerSideProps, NextPage, GetStaticPaths } from 'next';
-
 import { Grid, Card, Text, Button, Container, Image } from '@nextui-org/react';
-import { useRouter } from 'next/router';
-import { MainLayout, Poke, pokemonApi } from '../..';
+import { MainLayout, Poke, pokemonApi, toggleFavorite } from '../..';
 
 interface PropsPokemonPage {
   pokemon: Poke;
@@ -15,7 +14,13 @@ const PokemonPage: NextPage<PropsPokemonPage> = ({
     sprites: { other, front_default, back_default, back_female },
   },
 }) => {
-  const router = useRouter();
+  const onToggleFavorite = () => {
+    toggleFavorite(id);
+  };
+  useEffect(() => {
+    const item = localStorage.getItem('favorite');
+    console.log('favorite', item);
+  }, []);
 
   return (
     <MainLayout>
@@ -40,7 +45,7 @@ const PokemonPage: NextPage<PropsPokemonPage> = ({
               <Text h1 transform='capitalize' css={{ fontWeight: 'bold' }}>
                 {name}
               </Text>
-              <Button color='gradient' ghost>
+              <Button color='gradient' ghost onClick={onToggleFavorite}>
                 Guardar en favorito
               </Button>
             </Card.Header>
@@ -69,7 +74,7 @@ const PokemonPage: NextPage<PropsPokemonPage> = ({
 };
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
-  const pokemons = [...Array(10)].map((v, i) => `${i + 1}`);
+  const pokemons = [...Array(151)].map((v, i) => `${i + 1}`);
 
   return {
     paths: pokemons.map((id) => ({
@@ -80,12 +85,12 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 };
 
 export const getStaticProps: GetServerSideProps = async ({ params }) => {
-  // const { id } = params as { id: string };
+  const { id } = params as { id: string };
   // const {
   //   data: { results },
   // } = await pokemonApi.get<Pokemons>('/pokemon/?limint=151');
   //https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/133.png
-  const { data } = await pokemonApi.get<Poke>(`/pokemon/${1}`);
+  const { data } = await pokemonApi.get<Poke>(`/pokemon/${id}`);
   //https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/133.png
 
   return {

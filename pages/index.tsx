@@ -22,8 +22,9 @@ const HomePage: NextPage<PropsHomePage> = ({ pokemons }) => {
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const {
     data: { results },
-  } = await pokemonApi.get<Pokemons>('/pokemon/?limint=151');
+  } = await pokemonApi.get<Pokemons>('/pokemon/?limit=151');
   //https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/133.png
+
   const pokemons: Result[] = results.map((poke, i) => ({
     ...poke,
     id: i + 1,
