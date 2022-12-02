@@ -4,7 +4,7 @@ import { MainLayout } from '..';
 
 const HomePage: NextPage = () => {
   return (
-    <MainLayout>
+    <MainLayout title='Home'>
       <h1>Hello Word</h1>
       <Button color={'error'} />
     </MainLayout>
