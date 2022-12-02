@@ -1,12 +1,13 @@
 import { NextPage } from 'next';
 import { Button } from '@nextui-org/react';
+import { MainLayout } from '..';
 
 const HomePage: NextPage = () => {
   return (
-    <div>
+    <MainLayout>
       <h1>Hello Word</h1>
       <Button color={'error'} />
-    </div>
+    </MainLayout>
   );
 };
 
