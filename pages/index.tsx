@@ -8,7 +8,6 @@ interface PropsHomePage {
   pokemons: Result[];
 }
 const HomePage: NextPage<PropsHomePage> = ({ pokemons }) => {
-  console.log(pokemons);
   return (
     <MainLayout title='Home'>
       <Grid.Container gap={2} justify='flex-start'>
