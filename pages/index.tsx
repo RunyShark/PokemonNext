@@ -1,6 +1,5 @@
-import Image from 'next/image';
 import { NextPage, GetServerSideProps } from 'next';
-import { Grid, Card, Row, Text } from '@nextui-org/react';
+import { Grid } from '@nextui-org/react';
 import { pokemonApi } from '../api';
 import { CardUi, MainLayout, Pokemons, Result } from '..';
 
