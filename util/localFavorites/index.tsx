@@ -10,3 +10,11 @@ export const toggleFavorite = (id: number) => {
     localStorage.setItem('favorite', JSON.stringify(favorites));
   }
 };
+
+export const existsPokemonInFavorite = (id: number): boolean => {
+  if (typeof window === 'undefined') return false;
+  const favorites: number[] = JSON.parse(
+    localStorage.getItem('favorite') || '[]'
+  );
+  return favorites.includes(id);
+};
