@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Card, Grid } from '@nextui-org/react';
 import { Favorite, MainLayout, NoFavorites, pokemons } from '../../index';
 
 const FavoritesPage = () => {
