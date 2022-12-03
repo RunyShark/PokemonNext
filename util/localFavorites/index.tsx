@@ -1,5 +1,5 @@
 export const toggleFavorite = (id: number) => {
-  console.log('toggleFavorite call');
+  console.log('toggleFavorite call', id);
   let favorites: number[] = JSON.parse(
     localStorage.getItem('favorite') || '[]'
   );
@@ -7,8 +7,8 @@ export const toggleFavorite = (id: number) => {
     favorites = favorites.filter((poke) => poke !== id);
   } else {
     favorites.push(id);
-    localStorage.setItem('favorite', JSON.stringify(favorites));
   }
+  localStorage.setItem('favorite', JSON.stringify(favorites));
 };
 
 export const existsPokemonInFavorite = (id: number): boolean => {
@@ -18,3 +18,5 @@ export const existsPokemonInFavorite = (id: number): boolean => {
   );
   return favorites.includes(id);
 };
+export const pokemons = (): number[] =>
+  JSON.parse(localStorage.getItem('favorite') || '[]');
